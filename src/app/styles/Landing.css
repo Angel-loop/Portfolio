@@ -1,0 +1,23 @@
+.landing {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente */
+    min-height: 80vh; /* Ocupa toda la altura de la pantalla */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin: 0; /* Elimina márgenes laterales */
+    padding: 0 1rem; /* Mantiene un poco de espacio en los lados */
+}
+
+.Titulo{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    
+}
+.Titulo h1{
+    font-size: 5.4rem;
+}
+.Titulo h3{
+    font-size: 1.4rem;
+}
