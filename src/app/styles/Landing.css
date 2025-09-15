@@ -3,10 +3,11 @@
     gap: 2rem;
     align-items: center;
     justify-content: center; /* Centra horizontalmente */
-    min-height: 80vh; /* Ocupa toda la altura de la pantalla */
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
     width: 100%; /* Ocupa todo el ancho disponible */
     margin: 0; /* Elimina márgenes laterales */
     padding: 0 1rem; /* Mantiene un poco de espacio en los lados */
+    background-color: #508C78;
 }
 
 .Titulo{

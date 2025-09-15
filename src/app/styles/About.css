@@ -1,0 +1,25 @@
+.aboutContainer{
+    background-color: #313251;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%; 
+    margin: 0; 
+    padding: 0 1rem; 
+}
+.aboutContainer section{
+  color: #f1bd6c;
+  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aboutContainer section div h1{
+  font-size: 4rem;
+}
+.aboutContainer section div p{
+  font-size: 1.5rem;
+}
