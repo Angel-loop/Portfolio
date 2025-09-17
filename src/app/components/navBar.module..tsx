@@ -5,13 +5,13 @@ import { Agu_Display } from 'next/font/google';
 function NavBar() {
     return (
         <div style={{display:'flex',justifyContent:'flex-end'}}>
-          <div className='navContainer'>
+          <ul className='navContainer'>
              {/* Usa className en lugar de class */}
-            <button>Home</button>
-            <button>About</button>
-            <button>Contact</button>
-            <button>Portfolio</button>
-          </div> 
+          <li><button>Home</button></li>  
+          <li><button>About</button></li>
+          <li><button>Contact</button></li>
+          <li><button>Portfolio</button></li>
+          </ul> 
            
         </div>
     );

@@ -7,7 +7,7 @@ import NavBar  from "../components/navBar.module.";
 
 function Landing() { // Cambiado a PascalCase
   return (
-    <div style={{ backgroundColor: "#508C78" }}> {/* Corregida la sintaxis de style */}
+    <div className='landing_fondo'> {/* Corregida la sintaxis de style */}
       <NavBar/>
       <div className='landing'>
         <Image

@@ -16,4 +16,7 @@
 }
 .navContainer button{
 font-size: 1.4rem;
+color: #f1bd6c;
+font-weight: bold;
+    text-shadow: 3px 3px 0px rgba(157, 144, 144, 0.2);
 }
