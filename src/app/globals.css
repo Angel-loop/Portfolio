@@ -1,25 +1,189 @@
 @import "tailwindcss";
 
 :root {
-  --background_1: #508C78;
-  --background_2: #313251;
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+--text: #0f081a;
+--background: #f7f4fb;
+--primary: #7d4fc5;
+--secondary: #dc93db;
+--accent: #d172bf;
+
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --text: #ebe4f7;
+    --background: #07040b;
+    --primary: #683bb0;
+    --secondary: #6c236b;
+    --accent: #8e2e7d;
+
   }
+}*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  /* este es un ejemplo de applicacion modifica si es necesario */
-  /* background-color: var(--background_1); 
-  color: var(--foreground); */
+  background-color: var(--background);
+
 }
 
+/*****************************************
+************* GALLERY ********************
+*****************************************/
+.gallery-title{
+    color: var(--text);
+    font-size: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.gallery-title hr{
+    border: none;
+    height: .313rem;
+    width: 90%;
+    background: linear-gradient(var(--primary), var(--accent));
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.gallery-container{
+    color: var(--text);
+    padding: 0 .75rem;
+    column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-width: 33%;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+}
+
+.gallery-img{
+    transition: all 350ms ease;
+    -webkit-transition: all 350ms ease;
+    cursor: pointer;
+    margin-bottom: .75rem;
+}
+
+.gallery-img:hover{
+    opacity: .8;
+}
+
+@media (max-width:891px) {
+.gallery-container{
+
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+
+}
+}
+
+@media (max-width:480px){
+    .gallery-container{
+
+        column-count: 1;
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-width: 100%;
+        -webkit-column-width: 100%;
+        -moz-column-width: 100%;
+    }
+}
+
+/*****************************************
+************* CONTACT ********************
+*****************************************/
+
+.contact-container{
+    color: var(--text);
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+} 
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.25rem;
+}
+.form-title{
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: .5rem;
+}
+
+.color-effect{
+    background: linear-gradient(270deg, var(--accent),  var(--primary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-title hr{
+    border: none;
+    height: .313rem;
+    width: 7.5rem;
+    background: linear-gradient(var(--primary), var(--accent));
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.input-fields{
+    background-color: #ffffff;
+    width: 25rem;
+    height: 3.125rem;
+    border: none;
+    outline: none;
+    padding-left: 1.5rem;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px;
+}
+
+.input-fields:focus{
+    border: 2px solid var(--secondary);
+
+}
+
+.input-fields::placeholder{
+    color: #a9a9a9;
+}
+
+.form-container textarea{
+    height: 8.75rem;
+    border-radius: 20px;
+    padding-top: .915rem;
+}
+
+.form-container button{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 16px;
+    color: #fff;
+    gap: 10px;
+    border: none;
+    border-radius: 50px;
+    background: var(--accent);
+}
+
+@media (max-width:800px) {
+    .input-fields{
+        width: 80vw;
+    }
+    .image-container{
+        display: none;
+    }
+}

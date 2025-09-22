@@ -1,15 +1,15 @@
-import Image from "next/image";
+import "@/app/globals.css"
 import NavBar  from "./components/navBar.module.";
-import Landing from "./components/landing.module"
-import About from "./components/about.module"
+import Contact from "./components/contact";
+import Gallery from "./components/gallery";
+import React from "react";
 
 export default function Home() {
   return (
-    <div >
-      
-      <Landing/>
-      <About/>
-
+    <div className="home-container">
+      {/* <NavBar/> */}
+      <Gallery/>
+      <Contact/>
     </div>
   );
 }
