@@ -16,7 +16,11 @@ function About() {
                alt='Image for the landing page'
              />
       <div className='right_align'>
-          <h1>PlaceHolder Text</h1>
+        <div className='Info_Block'>
+          <h1>PlaceHolder </h1>
+          <h1>Text</h1>
+        </div>
+          
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus harum maiores quisquam 
             in fuga officiis quam cupiditate nobis expedita? Eveniet quia nam delectus magnam 
             sapiente amet optio facilis, tempora labore!
@@ -26,7 +30,10 @@ function About() {
      </section>
      <section>
       <div>
-          <h1>PlaceHolder Text</h1>
+        <div className='Info_Block'>
+          <h1>PlaceHolder </h1>
+          <h1>Text</h1>
+        </div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus harum maiores quisquam 
             in fuga officiis quam cupiditate nobis expedita? Eveniet quia nam delectus magnam 
             sapiente amet optio facilis, tempora labore!

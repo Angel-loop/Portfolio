@@ -17,6 +17,16 @@
   justify-content: center;
   align-items: center;
 }
+.Info_Block{
+display: flex;
+font-weight: bold;
+
+}
+.Info_Block h1:nth-child(2){
+color: var(--secondary);
+}
+
+
 .aboutContainer section div h1{
   font-size: 4rem;
 }
