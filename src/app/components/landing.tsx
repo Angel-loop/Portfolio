@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Miimagen from '../../../public/next.svg'
 import '../styles/Landing.css' 
 import { collectRoutesUsingEdgeRuntime } from 'next/dist/build/utils'
-import NavBar  from "./navBar";
+import NavBar  from "../components/navBar";
 
 function Landing() { // Cambiado a PascalCase
   return (

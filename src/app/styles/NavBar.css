@@ -16,7 +16,16 @@
 }
 .navContainer button{
 font-size: 1.4rem;
-color: #f1bd6c;
+color: var(--primary);
 font-weight: bold;
-    text-shadow: 3px 3px 0px rgba(157, 144, 144, 0.2);
+ext-shadow: 3px 3px 0px rgba(51, 38, 38, 0.2);
+transition: 0.4s;
+padding: 0.4rem;
+border-radius: 0.4rem;
+}
+
+.navContainer button:hover{
+color: var(--background);
+background-color: var(--secondary);
+transition:0.4s;
 }
