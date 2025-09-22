@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function Contact(){
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e:any) {
         e.preventDefault();
         const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",

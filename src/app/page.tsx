@@ -1,5 +1,5 @@
 import "@/app/globals.css"
-import NavBar  from "./components/navBar.module.";
+import NavBar  from "./components/navBar";
 import Contact from "./components/contact";
 import Gallery from "./components/gallery";
 import React from "react";
