@@ -6,6 +6,7 @@ import Miimagen from '../../../public/next.svg'
 function About() { 
   return (
     <div className='aboutContainer'>
+      <div className='separador'></div>
      <section>
        <Image
                src={Miimagen}
@@ -14,7 +15,7 @@ function About() {
                className='hidden md:block'
                alt='Image for the landing page'
              />
-      <div>
+      <div className='right_align'>
           <h1>PlaceHolder Text</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus harum maiores quisquam 
             in fuga officiis quam cupiditate nobis expedita? Eveniet quia nam delectus magnam 

@@ -1,5 +1,5 @@
 .aboutContainer{
-    background-color: #313251;
+  
     display: flex;
     flex-direction: column;
     gap: 4rem;
@@ -9,9 +9,9 @@
     width: 100%; 
     margin: 0; 
     padding: 0 1rem; 
+    width: 95%;
 }
 .aboutContainer section{
-  color: #f1bd6c;
   gap: 2rem;
   display: flex;
   justify-content: center;
@@ -22,4 +22,8 @@
 }
 .aboutContainer section div p{
   font-size: 1.5rem;
+}
+
+.right_align{
+  text-align: right;
 }
