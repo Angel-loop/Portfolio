@@ -1,6 +1,5 @@
 'use client'
-
-import '@/app/styles/contact.css'
+import '@/app/globals.css'
 import contact from '@/app/assets/contact.png'
 import arrow from '@/app/assets/arrow_icon.png'
 import Image from 'next/image'
@@ -34,10 +33,10 @@ export default function Contact(){
 
 
     return(
-        <div className="container">
+        <div className="contact-container">
             <form action="" className="form-container" onSubmit={handleSubmit}>
                 <div className="form-title">
-                    <h2>Get In Touch</h2>
+                    <h2>Get In <span className='color-effect'>Touch</span></h2>
                     <hr/>
                 </div>
 
