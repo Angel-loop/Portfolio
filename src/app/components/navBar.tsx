@@ -1,16 +1,28 @@
+'use client'; // ¡AGREGA ESTA LÍNEA!
 import React from 'react';
 import '../styles/NavBar.css'; 
 import { Agu_Display } from 'next/font/google';
-
 function NavBar() {
-    return (
+  
+    // Función para manejar el scroll suave
+  const handleScrollTo = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  
+  return (
         <div style={{display:'flex',justifyContent:'flex-end'}}>
           <ul className='navContainer'>
-             {/* Usa className en lugar de class */}
-          <li><button>Home</button></li>  
-          <li><button>About</button></li>
-          <li><button>Contact</button></li>
-          <li><button>Portfolio</button></li>
+          <li><button onClick={() => handleScrollTo('Home')}>Home</button></li>  
+          <li><button  onClick={() => handleScrollTo('About')}>About</button></li>
+          <li><button   onClick={() => handleScrollTo('Portfolio')}>Portfolio</button></li>
+          <li><button   onClick={() => handleScrollTo('Contact')}>Contact</button></li>
           </ul> 
            
         </div>
