@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/NavBar.css'; 
+import '@/app/globals.css'; 
 import { Agu_Display } from 'next/font/google';
 
 function NavBar() {
