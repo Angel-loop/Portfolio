@@ -3,16 +3,36 @@
     align-items: center;
     justify-content: flex-end;
     gap: 4rem;
-    padding: 2em;
+    padding: 1.4rem;
     width: auto;
     border-radius: 1rem;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12);
+    background-color: var(--background);
 
-    
-    backdrop-filter: blur(12px); /* Desenfoque del fondo detrás del elemento */
-    -webkit-backdrop-filter: blur(12px); /* Soporte para Safari */
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); 
 
      border: 1px solid rgba(255, 255, 255, 0.18);
+    
+     position: fixed;
+     z-index: 1000; 
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+/* Estado visible - posición normal */
+.nav-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Estado oculto - se desplaza hacia arriba fuera de vista */
+.nav-hidden {
+    transform: translateY(-100px);
+    opacity: 0;
+    pointer-events: none; /* Evita interacciones cuando está oculto */
+}
+/* Asegurar que los botones sean clickeables cuando la navbar es visible */
+.nav-visible button {
+    pointer-events: auto;
 }
 .navContainer button{
 font-size: 1.4rem;
