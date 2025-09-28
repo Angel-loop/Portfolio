@@ -200,3 +200,108 @@ body {
         display: none;
     }
 }
+
+/*****************************************
+************* LANDING ********************
+*****************************************/
+
+.landing {
+    width: 100vw;
+    display: flex;
+    flex: 1;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    
+}
+.landing_fondo{
+    background: var(--background);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100vw;
+    background-image: url('@/app/assets/hero.jfif');
+}
+.Titulo{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--primary);
+    text-align: center;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+}
+.Titulo h1{
+    font-size: 4.8rem;
+    font-weight: bold;
+
+}
+.Titulo h3{
+    font-size: 1.4rem;
+    color: var(--secondary);
+}
+
+
+/*****************************************
+************** ABOUT *********************
+*****************************************/
+
+.aboutContainer{
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;  
+    padding: 0 1rem; 
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.aboutContainer section{
+  color: var(--accent);
+  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aboutContainer section div h1{
+    color: var(--text);
+    font-size: 4rem;
+}
+.aboutContainer section div p{
+  font-size: 1.5rem;
+}
+
+
+/*****************************************
+************** NAVBAR ********************
+*****************************************/
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4rem;
+    padding: 1.4em;
+    width: auto;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(.3rem);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    position: fixed;
+    z-index: 1000;
+}
+
+.navContainer button{
+    font-size: 1.4rem;
+    color: var(--background);
+    font-weight: bold;
+    text-shadow: 3px 3px 0px rgba(157, 144, 144, 0.2);
+
+}

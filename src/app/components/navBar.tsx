@@ -1,6 +1,8 @@
+
 'use client';
 import React, { useState, useEffect } from 'react';
-import '../styles/NavBar.css';
+import '@/app/globals.css'; 
+import { Agu_Display } from 'next/font/google';
 
 function NavBar() {
   const [isVisible, setIsVisible] = useState(true);

@@ -1,7 +1,8 @@
-import React from 'react'
-import '../styles/About.css' 
-import Image from 'next/image'
-import Miimagen from '../../../public/next.svg'
+import React from 'react';
+import '@/app/globals.css';
+import Image from 'next/image';
+import A1 from '@/app/assets/a1.jpg';
+import A2 from '@/app/assets/a2.jpg';
 
 function About() { 
   return (
@@ -9,9 +10,7 @@ function About() {
       <div className='separador'></div>
      <section>
        <Image
-               src={Miimagen}
-               width={600}
-               height={1000}
+               src={A1}
                className='hidden md:block'
                alt='Image for the landing page'
              />
@@ -40,7 +39,7 @@ function About() {
           </p>
       </div>
          <Image
-               src={Miimagen}
+               src={A2}
                width={600}
                height={1000}
                className='hidden md:block'
