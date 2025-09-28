@@ -193,7 +193,7 @@ body {
 *****************************************/
 
 .landing {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex: 1;
     gap: 3rem;
@@ -206,6 +206,7 @@ body {
     background: var(--background);
     display: flex;
     min-height: 100vh;
+    width: 100vw;
     flex-direction: column;
     background-image: url('@/app/assets/hero.jfif');
 }
