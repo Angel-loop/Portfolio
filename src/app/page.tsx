@@ -6,13 +6,22 @@ import Landing from "./components/landing";
 import About from "./components/about";
 import React from "react";
 
+
 export default function Home() {
   return (
     <div className="home-container">
-      <Landing/>
-      <About/>
-      <Gallery/>
-      <Contact/>
+      <section id="Home">
+       <Landing/>
+      </section>
+      <section id="About">
+       <About/>
+      </section>
+      <section id="Portfolio">
+        <Gallery/>
+      </section>
+      <section id="Contact">
+       <Contact/>
+      </section>
     </div>
   );
 }

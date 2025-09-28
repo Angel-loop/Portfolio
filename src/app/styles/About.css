@@ -1,0 +1,39 @@
+.aboutContainer{
+  
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%; 
+    margin: 0; 
+    padding: 0 1rem; 
+    width: 95%;
+}
+.aboutContainer section{
+  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Info_Block{
+display: flex;
+font-weight: bold;
+
+}
+.Info_Block h1:nth-child(2){
+color: var(--secondary);
+}
+
+
+.aboutContainer section div h1{
+  font-size: 4rem;
+}
+.aboutContainer section div p{
+  font-size: 1.5rem;
+}
+
+.right_align{
+  text-align: right;
+}

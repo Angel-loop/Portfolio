@@ -3,11 +3,11 @@ import Image from 'next/image'
 import Miimagen from '../../../public/next.svg'
 import '@/app/globals.css' 
 import { collectRoutesUsingEdgeRuntime } from 'next/dist/build/utils'
-import NavBar  from "./navBar";
+import NavBar  from "../components/navBar";
 
 function Landing() { // Cambiado a PascalCase
   return (
-    <div className='landing_fondo'> {/* Corregida la sintaxis de style */}
+    <div className='landing_fondo'> 
       <NavBar/>
       <div className='landing'>
         <section className='Titulo'>
