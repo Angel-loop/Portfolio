@@ -1,5 +1,6 @@
 import '@/app/globals.css'
 import Image from 'next/image'
+import ImageCard from './ImageCard'
 
 import g1 from '@/app/assets/gallery/g1.jpg'
 import g2 from '@/app/assets/gallery/g2.jpg'
@@ -20,42 +21,29 @@ export default function gallery() {
 
         <div className="gallery-container">
         
+        <ImageCard imgSrc={g1}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis impedit, quos minus velit cum sequi. In perferendis incidunt id ab, magni totam ipsa quam eius magnam officia sunt. Corporis.</p>
+        </ImageCard>
 
-        <Image
-        src={g1}
-        alt=''
-       className='gallery-img'
-        />
+        <ImageCard imgSrc={g2}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis impedit, quos minus velit cum sequi. In perferendis incidunt id ab, magni totam ipsa quam eius magnam officia sunt. Corporis.</p>
+        </ImageCard>
 
-        <Image
-        src={g2}
-        alt=''
-        className='gallery-img'
-        />
+        <ImageCard imgSrc={g3}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis impedit, quos minus velit cum sequi. In perferendis incidunt id ab, magni totam ipsa quam eius magnam officia sunt. Corporis.</p>
+        </ImageCard>
 
-        <Image
-        src={g3}
-        alt=''
-        className='gallery-img'
-        />
+        <ImageCard imgSrc={g4}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis impedit, quos minus velit cum sequi. In perferendis incidunt id ab, magni totam ipsa quam eius magnam officia sunt. Corporis.</p>
+        </ImageCard>
 
-        <Image
-        src={g4}
-        alt=''
-        className='gallery-img'
-        />
+        <ImageCard imgSrc={g5}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis impedit, quos minus velit cum sequi. In perferendis incidunt id ab, magni totam ipsa quam eius magnam officia sunt. Corporis.</p>
+        </ImageCard>
 
-        <Image
-        src={g5}
-        alt=''
-        className='gallery-img'
-        />
-
-        <Image
-        src={g6}
-        alt=''
-        className='gallery-img'
-        />
+        <ImageCard imgSrc={g6}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis impedit, quos minus velit cum sequi. In perferendis incidunt id ab, magni totam ipsa quam eius magnam officia sunt. Corporis.</p>
+        </ImageCard>
 
     </div>
       </div>
