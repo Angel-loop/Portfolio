@@ -1,5 +1,7 @@
+'use client'
+
 import '@/app/globals.css'
-import Image from 'next/image'
+import { useState } from 'react'
 import ImageCard from './ImageCard'
 
 import g1 from '@/app/assets/gallery/g1.jpg'
@@ -11,7 +13,9 @@ import g6 from '@/app/assets/gallery/g6.jpg'
 
 export default function gallery() {
   
-  
+  const [isOpen, setIsOpen] = useState(false);
+
+
     return (
       <div>
         <div className="gallery-title">

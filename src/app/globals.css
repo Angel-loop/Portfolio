@@ -84,6 +84,7 @@ body {
     position: relative;
     cursor: pointer;
     margin-bottom: 1.25rem;
+    z-index: 1;
 }
 
 .img-text{
@@ -99,6 +100,41 @@ body {
     -webkit-transition: all 350ms ease;
 }
 
+
+.img-wrapper{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) ;
+    justify-items: center;
+    align-items: center;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.full-img{
+    width: 60%;
+    height: fit-content;
+    padding-bottom: 1rem;
+    display: block;
+    
+}
+
+.full-text{
+    color: white;
+    padding-bottom: 3rem;
+
+}
+
+.full-text h2{
+    font-size: 4rem;
+    margin-bottom: 4rem;
+}
 
 .gallery-img:hover{
     img{
@@ -116,13 +152,17 @@ body {
 }
 
 @media (max-width:891px) {
-.gallery-container{
+    
+    .gallery-container{
 
-    column-count: 2;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
 
-}
+    }
+
+
+
 }
 
 @media (max-width:480px){
@@ -135,6 +175,41 @@ body {
         -webkit-column-width: 100%;
         -moz-column-width: 100%;
     }
+
+    .img-wrapper{
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 100;
+        overflow: hidden;
+    }
+
+    .full-text{
+        color: white;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        place-content: center;
+
+    }
+
+    .full-text h2{
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    .full-text p{
+        padding: 2rem;
+    }
+
 }
 
 /*****************************************
@@ -320,8 +395,8 @@ body {
     backdrop-filter: blur(.3rem);
     border: 1px solid rgba(255, 255, 255, 0.18);
 
-    position: fixed;
-    z-index: 1000;
+    /*position: fixed;
+    z-index: 1000;*/
 }
 
 .navContainer button{
