@@ -305,6 +305,7 @@ body {
 ************* LANDING ********************
 *****************************************/
 
+
 .landing {
     width: 100vw;
     display: flex;
@@ -338,13 +339,75 @@ body {
 .Titulo h1{
     font-size: 4.8rem;
     font-weight: bold;
-
+    color: var(--primary);
 }
 .Titulo h3{
     font-size: 1.4rem;
     color: var(--secondary);
+    line-height: 1.6;
 }
 
+/* Estilos para los elementos con hover */
+.hover-magnetic {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: inherit;
+}
+
+.hover-wave {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.1rem 0.3rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  color: inherit;
+  white-space: normal;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+/* Estilos para los caracteres individuales - CORREGIDO */
+.char {
+  display: inline-block;
+  transition: all 0.3s ease;
+  color: inherit;
+  position: relative;
+  white-space: pre; /* Mantiene espacios y formato */
+}
+
+/* Estilos específicos para espacios - MEJORADO */
+.char.space {
+  display: inline-block;
+  width: 0.25em;
+  min-width: 0.25em;
+  white-space: pre;
+}
+
+.char.nbsp {
+  display: inline-block;
+  width: 0.3em;
+  min-width: 0.3em;
+  white-space: pre;
+}
+
+/* Prevenir que los caracteres se separen */
+.hover-wave {
+  word-wrap: normal;
+  hyphens: none;
+}
+
+.char {
+  transform: translateZ(0); /* Mejorar rendimiento */
+  backface-visibility: hidden;
+}
+
+/* Asegurar que las animaciones sean suaves */
+.Titulo h1, .Titulo h3 {
+  overflow: hidden;
+}
 
 /*****************************************
 ************** ABOUT *********************
