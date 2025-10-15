@@ -19,6 +19,7 @@ export default function gallery() {
     return (
       <div>
         <div className="gallery-title">
+           <div className='separador'></div>
           <h2>My Work</h2>
           <hr />
         </div>

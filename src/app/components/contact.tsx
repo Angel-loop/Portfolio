@@ -33,8 +33,10 @@ export default function Contact(){
 
 
     return(
-        <div className="contact-container">
-            <form action="" className="form-container" onSubmit={handleSubmit}>
+        <div >
+            <div className='separador'></div>
+            <div className="contact-container">
+                 <form action="" className="form-container" onSubmit={handleSubmit}>
                 <div className="form-title">
                     <h2>Get In <span className='color-effect'>Touch</span></h2>
                     <hr/>
@@ -53,6 +55,8 @@ export default function Contact(){
                 alt=''
                 />
             </div>
+            </div>
+           
         </div>
     )
 

@@ -26,7 +26,7 @@ body {
 .separador {
   width: 80%;
   height: 0.4rem;
-  background-color: var(--primary);
+  background-color: var(--background);
   margin: 2rem auto;
 }
 
@@ -127,7 +127,7 @@ body {
   padding: 1rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(.3rem);
+  backdrop-filter: blur(.4rem);
   border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 1000;
   transition: all 0.3s ease-in-out;
@@ -136,11 +136,12 @@ body {
 .nav_items {
   display: flex;
   gap: 2rem;
+  
 }
 
 .nav_item {
   font-size: 1.4rem;
-  color: var(--background);
+  color: var(--primary);
   font-weight: bold;
   background: none;
   border: none;
@@ -421,6 +422,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  
   padding: 2rem;
 }
 
