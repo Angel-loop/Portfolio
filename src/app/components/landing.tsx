@@ -1,10 +1,6 @@
 'use client'
 import React, { useRef, useEffect } from 'react'
-import Image from 'next/image'
-import Miimagen from '../../../public/next.svg'
 import '@/app/globals.css' 
-import { collectRoutesUsingEdgeRuntime } from 'next/dist/build/utils'
-import NavBar from "../components/navBar";
 import gsap from 'gsap'
 
 function Landing() {
@@ -12,17 +8,29 @@ function Landing() {
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const titleSpanRef = useRef<HTMLSpanElement>(null);
   const subtitleSpanRef = useRef<HTMLSpanElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
   const isHovered = useRef(false);
   const pendingAnimation = useRef<'enter' | 'leave' | null>(null);
   const originalSubtitleText = useRef<string>('');
 
   useEffect(() => {
-    // Animación inicial
-    if (titleRef.current && subtitleRef.current) {
-      gsap.fromTo([titleRef.current, subtitleRef.current], 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1.2, stagger: 0.3, ease: "power3.out" }
+    // Animación inicial más elaborada para coincidir con las transiciones
+    if (titleRef.current && subtitleRef.current && containerRef.current) {
+      const tl = gsap.timeline();
+      
+      tl.fromTo(containerRef.current, 
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 }
+      )
+      .fromTo(titleRef.current, 
+        { opacity: 0, y: 100, rotationX: 90 },
+        { opacity: 1, y: 0, rotationX: 0, duration: 1.2, ease: "power3.out" }
+      )
+      .fromTo(subtitleRef.current, 
+        { opacity: 0, y: 50, scale: 0.8 },
+        { opacity: 1, y: 0, scale: 1, duration: 1, ease: "back.out(1.7)" },
+        "-=0.5"
       );
     }
 
@@ -71,16 +79,17 @@ function Landing() {
           opacity: 0,
           duration: 0.2,
           onComplete: () => {
-            subtitleElement.innerHTML = originalSubtitleText.current;
-            gsap.to(subtitleElement, {
-              opacity: 1,
-              duration: 0.3,
-              onComplete: () => {
-                isAnimating.current = false;
-                // Procesar animación pendiente si existe
-                processPendingAnimation();
-              }
-            });
+            if (subtitleElement) {
+              subtitleElement.innerHTML = originalSubtitleText.current;
+              gsap.to(subtitleElement, {
+                opacity: 1,
+                duration: 0.3,
+                onComplete: () => {
+                  isAnimating.current = false;
+                  processPendingAnimation();
+                }
+              });
+            }
           }
         });
       };
@@ -99,9 +108,11 @@ function Landing() {
         }
       };
 
-      // Ejecutar animación de entrada (sin verificación de isAnimating)
+      // Ejecutar animación de entrada
       const executeSubtitleEnter = () => {
         isAnimating.current = true;
+
+        if (!subtitleElement) return;
 
         const text = subtitleElement.textContent || '';
         
@@ -135,16 +146,17 @@ function Landing() {
             ease: "power2.out",
             onComplete: () => {
               isAnimating.current = false;
-              // Procesar animación pendiente si existe
               processPendingAnimation();
             }
           }
         );
       };
 
-      // Ejecutar animación de salida (sin verificación de isAnimating)
+      // Ejecutar animación de salida
       const executeSubtitleLeave = () => {
         isAnimating.current = true;
+
+        if (!subtitleElement) return;
 
         // Obtener los caracteres actuales
         const chars = subtitleElement.querySelectorAll('.char');
@@ -178,7 +190,7 @@ function Landing() {
         });
       };
 
-      // Subtítulo - Efecto onda de caracteres MEJORADO
+      // Subtítulo - Efecto onda de caracteres
       const handleSubtitleEnter = () => {
         isHovered.current = true;
         
@@ -204,17 +216,26 @@ function Landing() {
       };
 
       // Agregar event listeners
-      titleElement.addEventListener('mouseenter', handleTitleEnter);
-      titleElement.addEventListener('mouseleave', handleTitleLeave);
-      subtitleElement.addEventListener('mouseenter', handleSubtitleEnter);
-      subtitleElement.addEventListener('mouseleave', handleSubtitleLeave);
+      if (titleElement) {
+        titleElement.addEventListener('mouseenter', handleTitleEnter);
+        titleElement.addEventListener('mouseleave', handleTitleLeave);
+      }
+
+      if (subtitleElement) {
+        subtitleElement.addEventListener('mouseenter', handleSubtitleEnter);
+        subtitleElement.addEventListener('mouseleave', handleSubtitleLeave);
+      }
 
       // Cleanup function
       return () => {
-        titleElement.removeEventListener('mouseenter', handleTitleEnter);
-        titleElement.removeEventListener('mouseleave', handleTitleLeave);
-        subtitleElement.removeEventListener('mouseenter', handleSubtitleEnter);
-        subtitleElement.removeEventListener('mouseleave', handleSubtitleLeave);
+        if (titleElement) {
+          titleElement.removeEventListener('mouseenter', handleTitleEnter);
+          titleElement.removeEventListener('mouseleave', handleTitleLeave);
+        }
+        if (subtitleElement) {
+          subtitleElement.removeEventListener('mouseenter', handleSubtitleEnter);
+          subtitleElement.removeEventListener('mouseleave', handleSubtitleLeave);
+        }
       };
     };
 
@@ -230,8 +251,8 @@ function Landing() {
   }, []);
 
   return (
-    <div className='landing_fondo'> 
-      <NavBar/>
+    <div className='landing_fondo' ref={containerRef}> 
+      {/* NavBar removido de aquí - ahora está en page.tsx */}
       <div className='landing'>
         <section className='Titulo'>
           <h1 ref={titleRef}>
