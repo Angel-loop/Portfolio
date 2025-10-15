@@ -17,29 +17,29 @@ export default function ImageCard({children, imgSrc, props}:any) {
     className={isOpen? '':'gallery-img'}
     onClick={()=> {
 
-      let tElement = ftext.current;
-      let iElement = fimg.current;
+      const tElement = ftext.current;
+      const iElement = fimg.current;
 
       if(!isOpen){
-         // @ts-ignore
+         // @ts-expect-error
         iElement.classList.remove('out-left');
-         // @ts-ignore
+         // @ts-expect-error
         tElement.classList.remove('out-right');
-         // @ts-ignore
+         // @ts-expect-error
         iElement.classList.add('slide-left');
-         // @ts-ignore
+         // @ts-expect-error
         tElement.classList.add('slide-right');
 
         setIsOpen(!isOpen)
 
       }else{
-         // @ts-ignore
+         // @ts-expect-error
         iElement.classList.add('out-left');
-         // @ts-ignore
+         // @ts-expect-error
         tElement.classList.add('out-right');
-         // @ts-ignore
+         // @ts-expect-error
         iElement.classList.remove('slide-left');
-         // @ts-ignore
+         // @ts-expect-error
         tElement.classList.remove('slide-right');
         
         setTimeout(()=>{setIsOpen(!isOpen)},250)

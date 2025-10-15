@@ -1,8 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
-import Miimagen from '../../../public/next.svg'
 import '@/app/globals.css' 
-import { collectRoutesUsingEdgeRuntime } from 'next/dist/build/utils'
 import NavBar  from "../components/navBar";
 
 function Landing() { // Cambiado a PascalCase

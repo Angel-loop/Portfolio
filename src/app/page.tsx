@@ -1,5 +1,4 @@
 import "@/app/globals.css"
-import NavBar  from "./components/navBar";
 import Contact from "./components/contact";
 import Gallery from "./components/gallery";
 import Landing from "./components/landing";
