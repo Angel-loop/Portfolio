@@ -70,7 +70,7 @@ body {
 
 .gallery-container{
     color: var(--text);
-    padding: 0 .75rem;
+    padding: 1rem;
     column-count: 3;
     -webkit-column-count: 3;
     -moz-column-count: 3;
@@ -79,18 +79,149 @@ body {
     -moz-column-width: 33%;
 }
 
+
 .gallery-img{
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 1.25rem;
+    z-index: 1;
+}
+
+.img-text{
+    position: absolute; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    padding: 1rem;
+    color: var(--background);
+    opacity: 0;
     transition: all 350ms ease;
     -webkit-transition: all 350ms ease;
+}
+
+
+.img-wrapper{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) ;
+    justify-items: center;
+    align-items: center;
+    z-index: 100;
+    overflow: hidden;
     cursor: pointer;
-    margin-bottom: .75rem;
+
+
+}
+
+@keyframes slide-right {
+    from{
+        translate:-150vw 0;
+    }
+
+    to{
+        translate: 0 0;
+        
+    }
+}
+
+@keyframes slide-left {
+    
+    from{
+        translate:150vw 0;
+    }
+
+    to{
+        translate: 0 0;
+    }
+}
+
+@keyframes out-left {
+    
+    from{
+        translate:0 0;
+    }
+
+    to{
+        translate: -150vw 0;
+    }
+}
+
+@keyframes out-right {
+    
+    from{
+        translate:0 0;
+    }
+
+    to{
+        translate: 150vw 0;
+    }
+}
+
+
+.slide-right{
+    animation-name: slide-right;
+    animation-duration: 500ms;
+}
+
+.slide-left{
+    animation-name: slide-left;
+    animation-duration: 500ms;
+}
+
+.out-left{
+    animation-name: out-left;
+    animation-duration: 500ms;
+}
+
+.out-right{
+    animation-name: out-right;
+    animation-duration: 500ms;
+}
+
+.full-img{
+    width: 60%;
+    height: fit-content;
+    
+}
+
+.full-text{
+    color: white;
+    padding-bottom: 3rem;
+
+}
+
+.full-text h2{
+    font-size: 4rem;
+    margin-bottom: 4rem;
 }
 
 .gallery-img:hover{
-    opacity: .8;
+
+    img{
+        filter: blur(4px);
+        transition: all 350ms ease;
+        -webkit-transition: all 350ms ease;
+        
+    }
+
+
+}
+
+.img-text:hover{
+    filter: none;
+    opacity: 1;
+    cursor: pointer;
 }
 
 @media (max-width:891px) {
+    
 .gallery-container{
 
     column-count: 2;
@@ -98,6 +229,9 @@ body {
     -moz-column-count: 2;
 
 }
+
+
+
 }
 
 @media (max-width:480px){
@@ -110,6 +244,41 @@ body {
         -webkit-column-width: 100%;
         -moz-column-width: 100%;
     }
+
+    .img-wrapper{
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 100;
+        overflow: hidden;
+    }
+
+    .full-text{
+        color: white;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        place-content: center;
+
+    }
+
+    .full-text h2{
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    .full-text p{
+        padding: 2rem;
+    }
+
 }
 
 /*****************************************
@@ -219,6 +388,7 @@ body {
     background: var(--background);
     display: flex;
     min-height: 100vh;
+    width: 100vw;
     flex-direction: column;
     width: 100vw;
     background-image: url('@/app/assets/hero.jfif');
@@ -294,14 +464,13 @@ body {
     backdrop-filter: blur(.3rem);
     border: 1px solid rgba(255, 255, 255, 0.18);
 
-    position: fixed;
-    z-index: 1000;
+    /*position: fixed;
+    z-index: 1000;*/
 }
 
 .navContainer button{
     font-size: 1.4rem;
     color: var(--background);
     font-weight: bold;
-    text-shadow: 3px 3px 0px rgba(157, 144, 144, 0.2);
-
+    
 }
