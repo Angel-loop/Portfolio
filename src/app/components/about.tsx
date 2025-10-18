@@ -11,8 +11,10 @@ function About() {
      <section>
        <Image
                src={A1}
-               className='hidden md:block'
-               alt='Image for the landing page'
+               className='about-image'
+               alt='Image for the about section'
+               width={500}
+               height={600}
              />
       <div className='right_align'>
         <div className='Info_Block'>
@@ -40,10 +42,10 @@ function About() {
       </div>
          <Image
                src={A2}
-               width={600}
-               height={1000}
-               className='hidden md:block'
-               alt='Image for the landing page'
+               className='about-image'
+               alt='Image for the about section'
+               width={500}
+               height={600}
              />
     
      </section>
@@ -51,4 +53,4 @@ function About() {
   )
 }
 
-export default About; 
+export default About;
