@@ -285,7 +285,7 @@ body {
 
 .aboutContainer section {
   color: var(--accent);
-  gap: 2rem;
+  gap: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -296,19 +296,44 @@ body {
 .aboutContainer section div h1 {
   color: var(--text);
   font-size: 4rem;
+  margin: 0;
 }
 
 .aboutContainer section div p {
   font-size: 1.5rem;
   line-height: 1.6;
-}
-
-.right_align {
-  text-align: right;
+  max-width: 500px;
 }
 
 .Info_Block {
   margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Primera sección - texto alineado a la derecha */
+.right_align {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.right_align .Info_Block {
+  justify-content: flex-end;
+}
+
+.right_align p {
+  text-align: right;
+}
+
+/* Segunda sección - texto alineado a la izquierda */
+.aboutContainer section:last-child > div:first-child .Info_Block {
+  justify-content: flex-start;
+}
+
+.aboutContainer section:last-child > div:first-child p {
+  text-align: left;
 }
 
 /*****************************************
