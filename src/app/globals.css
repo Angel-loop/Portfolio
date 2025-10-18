@@ -914,3 +914,33 @@ body.modal-open {
 .contact-container::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--accent), var(--primary));
 }
+
+/* DELICATED STYLES */
+/* Reset for initial gallery state */
+.gallery-img.initial-state .img-text {
+  opacity: 0 !important;
+}
+
+.gallery-img.initial-state img {
+  filter: none !important;
+  transform: none !important;
+}
+/* Force reset for gallery images - Add this at the end of your globals.css */
+.gallery-container .gallery-img .img-text {
+  opacity: 0 !important;
+}
+
+.gallery-container .gallery-img .gallery-image {
+  filter: none !important;
+  transform: none !important;
+}
+
+/* Ensure hover states work correctly */
+.gallery-container .gallery-img:hover .img-text {
+  opacity: 1 !important;
+}
+
+.gallery-container .gallery-img:hover .gallery-image {
+  filter: blur(4px) !important;
+  transform: scale(1.05) !important;
+}
