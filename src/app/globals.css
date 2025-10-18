@@ -136,7 +136,6 @@ body {
 .nav_items {
   display: flex;
   gap: 2rem;
-  
 }
 
 .nav_item {
@@ -278,11 +277,12 @@ body {
   flex-direction: column;
   gap: 4rem;
   align-items: center;
-  justify-content: flex-start; /* Cambiado de center a flex-start */
-  min-height: auto; /* Cambiado de 100vh a auto */
+  justify-content: flex-start;
+  min-height: auto;
   width: 100%;
   padding: 2rem 1rem;
 }
+
 .aboutContainer section {
   color: var(--accent);
   gap: 2rem;
@@ -342,17 +342,34 @@ body {
   column-width: 33%;
   -webkit-column-width: 33%;
   -moz-column-width: 33%;
-  min-height: auto; /* Cambiado de 100vh a auto */
+  min-height: auto;
+  position: relative;
 }
 
+/* Contenedor principal de la imagen en galería (estado normal) */
 .gallery-img {
   position: relative;
   cursor: pointer;
   margin-bottom: 1.25rem;
   z-index: 1;
   break-inside: avoid;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%;
 }
 
+/* Imagen normal en galería */
+.gallery-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 350ms ease;
+  border-radius: 8px;
+}
+
+/* Texto que aparece al hacer hover (estado normal) */
 .img-text {
   position: absolute;
   display: flex;
@@ -363,53 +380,111 @@ body {
   color: var(--background);
   opacity: 0;
   transition: all 350ms ease;
-  -webkit-transition: all 350ms ease;
   background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  border-radius: 8px;
+  pointer-events: none;
 }
 
-.img-wrapper {
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+/* Efecto hover para la imagen de galería */
+.gallery-img:hover img {
+  filter: blur(4px);
+  transform: scale(1.05);
+}
+
+.gallery-img:hover .img-text {
+  opacity: 1;
+}
+
+/* Modal cuando la imagen está expandida (estado isOpen = true) */
+.img-wrapper-open {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  justify-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  z-index: 100;
-  overflow: hidden;
+  z-index: 1000;
+  padding: 2rem;
+  overflow: auto;
 }
 
+/* Contenido del modal */
+.img-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen en modal expandido */
 .full-img {
-  width: 60%;
-  height: fit-content;
-  padding-bottom: 1rem;
-  display: block;
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Texto en modal expandido */
 .full-text {
   color: white;
-  padding-bottom: 3rem;
+  padding: 2rem;
 }
 
 .full-text h2 {
-  font-size: 4rem;
-  margin-bottom: 4rem;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--secondary);
+  font-weight: bold;
 }
 
-.gallery-img:hover img {
-  filter: blur(4px);
-  transition: all 350ms ease;
-  -webkit-transition: all 350ms ease;
+.full-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #e0e0e0;
 }
 
-.img-text:hover {
-  filter: none;
-  opacity: 1;
+/* Clase para ocultar elementos */
+.hidden {
+  display: none !important;
+}
+
+/* Ocultar scrollbar cuando el modal está abierto */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Botón de cerrar para el modal */
+.close-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
 /*****************************************
@@ -418,11 +493,10 @@ body {
 .contact-container {
   color: var(--text);
   width: 100%;
-  min-height: auto; /* Cambiado de 100vh a auto */
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  
   padding: 2rem;
 }
 
@@ -496,6 +570,31 @@ body {
 /*****************************************
 ************* RESPONSIVE *****************
 *****************************************/
+@media (max-width: 1024px) {
+  .gallery-container {
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-width: 50%;
+    -webkit-column-width: 50%;
+    -moz-column-width: 50%;
+  }
+  
+  .img-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .full-img {
+    max-height: 60vh;
+  }
+  
+  .full-text h2 {
+    font-size: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   /* Navbar responsive */
   .navContainer {
@@ -542,25 +641,50 @@ body {
   }
 
   /* Gallery responsive */
+  .gallery-title {
+    font-size: 3rem;
+    padding: 1.5rem 0;
+  }
+  
   .gallery-container {
     column-count: 2;
     -webkit-column-count: 2;
     -moz-column-count: 2;
+    padding: 0.5rem;
   }
-
-  .gallery-title {
-    font-size: 3rem;
+  
+  .img-wrapper-open {
+    padding: 1rem;
   }
-
+  
   .img-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 1.5rem;
   }
-
+  
+  .full-img {
+    max-height: 50vh;
+    width: 95%;
+  }
+  
+  .full-text {
+    padding: 1rem;
+  }
+  
   .full-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .full-text p {
+    font-size: 1rem;
+  }
+  
+  .close-button {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
   }
 
   /* Contact responsive */
@@ -644,21 +768,33 @@ body {
     padding: 1rem 0;
   }
 
+  .gallery-img {
+    margin-bottom: 1rem;
+  }
+  
+  .img-wrapper-open {
+    padding: 0.5rem;
+  }
+  
+  .full-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .full-text p {
+    font-size: 0.9rem;
+  }
+  
+  .img-text {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
   .full-text {
     padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-
-  .full-text h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .full-text p {
-    padding: 1rem;
   }
 
   /* Contact mobile */
@@ -675,6 +811,77 @@ body {
     width: 40px;
     height: 40px;
   }
+}
+
+/* Animaciones para las transiciones de Gallery */
+.gallery-img {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.img-wrapper-open {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Efectos de overlay mejorados */
+.gallery-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(125, 79, 197, 0.1),
+    rgba(220, 147, 219, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.gallery-img:hover::before {
+  opacity: 1;
+}
+
+/* Scrollbar personalizado para el modal */
+.img-wrapper-open::-webkit-scrollbar {
+  width: 8px;
+}
+
+.img-wrapper-open::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.img-wrapper-open::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 4px;
+}
+
+.img-wrapper-open::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent), var(--primary));
 }
 
 /* Scroll suave para componentes individuales */
