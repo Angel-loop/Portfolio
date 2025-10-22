@@ -31,10 +31,24 @@ body {
 }
 
 .color-effect {
-  background: linear-gradient(270deg, var(--accent), var(--primary));
+  background: linear-gradient(270deg, var(--accent), var(--primary), var(--secondary), var(--accent));
+  background-size: 400% 400%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /*****************************************

@@ -6,7 +6,8 @@ import gsap from 'gsap'
 function Landing() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLHeadingElement>(null);
-  const titleSpanRef = useRef<HTMLSpanElement>(null);
+  const titleSpan1Ref = useRef<HTMLSpanElement>(null);
+  const titleSpan2Ref = useRef<HTMLSpanElement>(null);
   const subtitleSpanRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
@@ -36,18 +37,19 @@ function Landing() {
 
     // Efectos hover más elaborados
     const setupHoverEffects = () => {
-      const titleElement = titleSpanRef.current;
+      const titleElement1 = titleSpan1Ref.current;
+      const titleElement2 = titleSpan2Ref.current;
       const subtitleElement = subtitleSpanRef.current;
 
-      if (!titleElement || !subtitleElement) return;
+      if (!titleElement1 || !titleElement2 || !subtitleElement) return;
 
       // Guardar el texto original
       originalSubtitleText.current = subtitleElement.innerHTML;
 
-      // Título principal - Efecto magnético
+      // Título principal - Efecto magnético para AMBOS spans
       const handleTitleEnter = () => {
         const tl = gsap.timeline();
-        tl.to(titleElement, {
+        tl.to([titleElement1, titleElement2], {
           scale: 1.05,
           y: -5,
           rotationY: 10,
@@ -55,7 +57,7 @@ function Landing() {
           duration: 0.4,
           ease: "power2.out"
         })
-        .to(titleElement, {
+        .to([titleElement1, titleElement2], {
           rotationY: 0,
           duration: 0.2,
           ease: "power2.inOut"
@@ -63,7 +65,7 @@ function Landing() {
       };
 
       const handleTitleLeave = () => {
-        gsap.to(titleElement, {
+        gsap.to([titleElement1, titleElement2], {
           scale: 1,
           y: 0,
           rotationY: 0,
@@ -215,10 +217,17 @@ function Landing() {
         executeSubtitleLeave();
       };
 
-      // Agregar event listeners
-      if (titleElement) {
-        titleElement.addEventListener('mouseenter', handleTitleEnter);
-        titleElement.addEventListener('mouseleave', handleTitleLeave);
+      // Agregar event listeners a AMBOS spans del título
+      if (titleElement1 && titleElement2) {
+        // Crear un contenedor virtual para manejar el hover de ambos spans
+        const titleContainer = document.createElement('div');
+        titleContainer.style.display = 'contents'; // No afecta el layout
+        
+        // Agregar listeners a ambos spans individualmente
+        [titleElement1, titleElement2].forEach(element => {
+          element.addEventListener('mouseenter', handleTitleEnter);
+          element.addEventListener('mouseleave', handleTitleLeave);
+        });
       }
 
       if (subtitleElement) {
@@ -228,9 +237,11 @@ function Landing() {
 
       // Cleanup function
       return () => {
-        if (titleElement) {
-          titleElement.removeEventListener('mouseenter', handleTitleEnter);
-          titleElement.removeEventListener('mouseleave', handleTitleLeave);
+        if (titleElement1 && titleElement2) {
+          [titleElement1, titleElement2].forEach(element => {
+            element.removeEventListener('mouseenter', handleTitleEnter);
+            element.removeEventListener('mouseleave', handleTitleLeave);
+          });
         }
         if (subtitleElement) {
           subtitleElement.removeEventListener('mouseenter', handleSubtitleEnter);
@@ -256,8 +267,12 @@ function Landing() {
       <div className='landing'>
         <section className='Titulo'>
           <h1 ref={titleRef}>
-            <span ref={titleSpanRef} className='hover-magnetic'>
-              Portfolio 2025
+            <span ref={titleSpan1Ref} className='hover-magnetic'>
+              Portfolio 
+            </span>
+            {''}
+            <span ref={titleSpan2Ref} className='hover-magnetic color-effect'>
+              2025
             </span>
           </h1>
           <h3 ref={subtitleRef}> 
