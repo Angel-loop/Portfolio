@@ -1,55 +1,55 @@
-
-'use client';
+'use client'
 import React, { useState, useEffect } from 'react';
-import '@/app/globals.css'; 
+import '@/app/globals.css';
 
-function NavBar() {
+interface NavBarProps {
+  onNavigate: (sectionId: string) => void;
+  currentSection: string;
+}
+
+function NavBar({ onNavigate, currentSection }: NavBarProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Función para manejar el scroll suave
-  const handleScrollTo = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+  const handleNavClick = (sectionId: string) => {
+    onNavigate(sectionId);
   };
 
-  // Controlador del scroll
+  // Controlar visibilidad de la navbar al hacer scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
+      
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Bajando y hemos pasado los 100px - ocultar
         setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        // Subiendo - mostrar
+      } else {
         setIsVisible(true);
       }
-
+      
       setLastScrollY(currentScrollY);
     };
 
-    // Agregar el event listener
     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Limpiar el event listener
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   return (
-    <div style={{display:'flex',justifyContent:'flex-end'}}>
-      <ul className={`navContainer ${isVisible ? 'nav-visible' : 'nav-hidden'}`}>
-        <li><button onClick={() => handleScrollTo('Home')}>Home</button></li>  
-        <li><button onClick={() => handleScrollTo('About')}>About</button></li>
-        <li><button onClick={() => handleScrollTo('Portfolio')}>Portfolio</button></li>
-        <li><button onClick={() => handleScrollTo('Contact')}>Contact</button></li>
-      </ul> 
-    </div>
+    <nav className={`navContainer ${isVisible ? 'nav-visible' : 'nav-hidden'}`}>
+      <div className='nav_logo'>
+        {/* <h1>Logo</h1> */}
+      </div>
+      <div className='nav_items'>
+        {['Home', 'About', 'Portfolio', 'Contact'].map((item) => (
+          <button
+            key={item}
+            className={`nav_item ${currentSection === item ? 'nav-active' : ''}`}
+            onClick={() => handleNavClick(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    </nav>
   );
 }
 
