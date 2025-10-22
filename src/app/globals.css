@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 :root {
@@ -188,6 +189,113 @@ body {
 }
 
 /*****************************************
+************* NAVBAR RESPONSIVE **********
+*****************************************/
+@media (max-width: 768px) {
+  .navContainer {
+    top: 1rem;
+    right: 1rem;
+    gap: 2rem;
+    padding: 1rem 1.5rem;
+  }
+  
+  .nav_items {
+    display: none !important;
+  }
+  
+  /* Botón hamburguesa */
+  .nav_item[aria-expanded] {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .nav_item[aria-expanded] span {
+    display: block;
+    width: 1.5rem;
+    height: 0.125rem;
+    background-color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  /* Panel del menú móvil */
+  .nav-mobile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 8, 26, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 6rem;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-mobile-panel.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-mobile-panel .nav_item {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    color: var(--background);
+    border: 2px solid transparent;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-mobile-panel .nav_item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+}
+
+@media (min-width: 769px) {
+  .nav_item[aria-expanded] {
+    display: none !important;
+  }
+  
+  .nav-mobile-panel {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navContainer {
+    top: 0.5rem;
+    right: 0.5rem;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav_items {
+    gap: 1rem;
+  }
+  
+  .nav_item {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/*****************************************
 ************* LANDING ********************
 *****************************************/
 .landing_fondo {
@@ -283,6 +391,34 @@ body {
 }
 
 /*****************************************
+************* LANDING RESPONSIVE *********
+*****************************************/
+@media (max-width: 768px) {
+  .Titulo h1 {
+    font-size: 3.5rem;
+  }
+  
+  .Titulo h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Titulo h1 {
+    font-size: 2.8rem;
+  }
+  
+  .Titulo h3 {
+    font-size: 1.1rem;
+  }
+
+  .landing {
+    padding: 1rem;
+    gap: 2rem;
+  }
+}
+
+/*****************************************
 ************** ABOUT *********************
 *****************************************/
 .aboutContainer {
@@ -351,6 +487,43 @@ body {
 }
 
 /*****************************************
+************* ABOUT RESPONSIVE ***********
+*****************************************/
+@media (max-width: 768px) {
+  .aboutContainer section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .aboutContainer section div h1 {
+    font-size: 3rem;
+  }
+  
+  .aboutContainer section div p {
+    font-size: 1.2rem;
+  }
+
+  .right_align {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutContainer {
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .aboutContainer section div h1 {
+    font-size: 2.5rem;
+  }
+  
+  .aboutContainer section div p {
+    font-size: 1.1rem;
+  }
+}
+
+/*****************************************
 ************* GALLERY ********************
 *****************************************/
 .gallery-title {
@@ -397,6 +570,7 @@ body {
   transition: all 0.3s ease;
   display: inline-block;
   width: 100%;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 /* Imagen normal en galería */
@@ -449,6 +623,7 @@ body {
   z-index: 1000;
   padding: 2rem;
   overflow: auto;
+  animation: fadeIn 0.3s ease-out;
 }
 
 /* Contenido del modal */
@@ -524,6 +699,150 @@ body.modal-open {
 .close-button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
+}
+
+/* Efectos de overlay mejorados */
+.gallery-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(125, 79, 197, 0.1),
+    rgba(220, 147, 219, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.gallery-img:hover::before {
+  opacity: 1;
+}
+
+/*****************************************
+************* GALLERY RESPONSIVE *********
+*****************************************/
+@media (max-width: 1024px) {
+  .gallery-container {
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-width: 50%;
+    -webkit-column-width: 50%;
+    -moz-column-width: 50%;
+  }
+  
+  .img-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .full-img {
+    max-height: 60vh;
+  }
+  
+  .full-text h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 3rem;
+    padding: 1.5rem 0;
+  }
+  
+  .gallery-container {
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    padding: 0.5rem;
+  }
+  
+  .img-wrapper-open {
+    padding: 1rem;
+  }
+  
+  .img-wrapper {
+    gap: 1.5rem;
+  }
+  
+  .full-img {
+    max-height: 50vh;
+    width: 95%;
+  }
+  
+  .full-text {
+    padding: 1rem;
+  }
+  
+  .full-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .full-text p {
+    font-size: 1rem;
+  }
+  
+  .close-button {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    column-count: 1;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-width: 100%;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+  }
+
+  .gallery-title {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+  }
+
+  .gallery-img {
+    margin-bottom: 1rem;
+  }
+  
+  .img-wrapper-open {
+    padding: 0.5rem;
+  }
+  
+  .full-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .full-text p {
+    font-size: 0.9rem;
+  }
+  
+  .img-text {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .full-text {
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 /*****************************************
@@ -607,126 +926,9 @@ body.modal-open {
 }
 
 /*****************************************
-************* RESPONSIVE *****************
+************* CONTACT RESPONSIVE *********
 *****************************************/
-@media (max-width: 1024px) {
-  .gallery-container {
-    column-count: 2;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-width: 50%;
-    -webkit-column-width: 50%;
-    -moz-column-width: 50%;
-  }
-  
-  .img-wrapper {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-  
-  .full-img {
-    max-height: 60vh;
-  }
-  
-  .full-text h2 {
-    font-size: 2.5rem;
-  }
-}
-
 @media (max-width: 768px) {
-  /* Navbar responsive */
-  .navContainer {
-    top: 1rem;
-    right: 1rem;
-    gap: 2rem;
-    padding: 1rem 1.5rem;
-  }
-  
-  .nav_items {
-    gap: 1.5rem;
-  }
-  
-  .nav_item {
-    font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  /* Landing responsive */
-  .Titulo h1 {
-    font-size: 3.5rem;
-  }
-  
-  .Titulo h3 {
-    font-size: 1.2rem;
-  }
-
-  /* About responsive */
-  .aboutContainer section {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .aboutContainer section div h1 {
-    font-size: 3rem;
-  }
-  
-  .aboutContainer section div p {
-    font-size: 1.2rem;
-  }
-
-  .right_align {
-    text-align: center;
-  }
-
-  /* Gallery responsive */
-  .gallery-title {
-    font-size: 3rem;
-    padding: 1.5rem 0;
-  }
-  
-  .gallery-container {
-    column-count: 2;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    padding: 0.5rem;
-  }
-  
-  .img-wrapper-open {
-    padding: 1rem;
-  }
-  
-  .img-wrapper {
-    gap: 1.5rem;
-  }
-  
-  .full-img {
-    max-height: 50vh;
-    width: 95%;
-  }
-  
-  .full-text {
-    padding: 1rem;
-  }
-  
-  .full-text h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .full-text p {
-    font-size: 1rem;
-  }
-  
-  .close-button {
-    top: 1rem;
-    right: 1rem;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-
-  /* Contact responsive */
   .contact-container {
     flex-direction: column;
     justify-content: center;
@@ -747,96 +949,6 @@ body.modal-open {
 }
 
 @media (max-width: 480px) {
-  /* Navbar mobile */
-  .navContainer {
-    top: 0.5rem;
-    right: 0.5rem;
-    gap: 1rem;
-    padding: 0.8rem 1rem;
-  }
-  
-  .nav_items {
-    gap: 1rem;
-  }
-  
-  .nav_item {
-    font-size: 1rem;
-    padding: 0.3rem 0.6rem;
-  }
-
-  /* Landing mobile */
-  .Titulo h1 {
-    font-size: 2.8rem;
-  }
-  
-  .Titulo h3 {
-    font-size: 1.1rem;
-  }
-
-  .landing {
-    padding: 1rem;
-    gap: 2rem;
-  }
-
-  /* About mobile */
-  .aboutContainer {
-    gap: 2rem;
-    padding: 1rem;
-  }
-  
-  .aboutContainer section div h1 {
-    font-size: 2.5rem;
-  }
-  
-  .aboutContainer section div p {
-    font-size: 1.1rem;
-  }
-
-  /* Gallery mobile */
-  .gallery-container {
-    column-count: 1;
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-width: 100%;
-    -webkit-column-width: 100%;
-    -moz-column-width: 100%;
-  }
-
-  .gallery-title {
-    font-size: 2.5rem;
-    padding: 1rem 0;
-  }
-
-  .gallery-img {
-    margin-bottom: 1rem;
-  }
-  
-  .img-wrapper-open {
-    padding: 0.5rem;
-  }
-  
-  .full-text h2 {
-    font-size: 1.8rem;
-  }
-  
-  .full-text p {
-    font-size: 0.9rem;
-  }
-  
-  .img-text {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .full-text {
-    padding-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  /* Contact mobile */
   .contact-container {
     padding: 1rem;
   }
@@ -844,19 +956,11 @@ body.modal-open {
   .form-title {
     font-size: 1.8rem;
   }
-
-  /* Transiciones mobile */
-  .transition-spinner {
-    width: 40px;
-    height: 40px;
-  }
 }
 
-/* Animaciones para las transiciones de Gallery */
-.gallery-img {
-  animation: fadeInUp 0.6s ease-out;
-}
-
+/*****************************************
+************* ANIMACIONES ****************
+*****************************************/
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -868,10 +972,6 @@ body.modal-open {
   }
 }
 
-.img-wrapper-open {
-  animation: fadeIn 0.3s ease-out;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -881,29 +981,9 @@ body.modal-open {
   }
 }
 
-/* Efectos de overlay mejorados */
-.gallery-img::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg,
-    rgba(125, 79, 197, 0.1),
-    rgba(220, 147, 219, 0.1)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 8px;
-  pointer-events: none;
-}
-
-.gallery-img:hover::before {
-  opacity: 1;
-}
-
+/*****************************************
+************* SCROLLBAR ******************
+*****************************************/
 /* Scrollbar personalizado para el modal */
 .img-wrapper-open::-webkit-scrollbar {
   width: 8px;
@@ -954,7 +1034,9 @@ body.modal-open {
   background: linear-gradient(180deg, var(--accent), var(--primary));
 }
 
-/* DELICATED STYLES */
+/*****************************************
+************* ESTILOS DEDICADOS **********
+*****************************************/
 /* Reset for initial gallery state */
 .gallery-img.initial-state .img-text {
   opacity: 0 !important;
@@ -964,7 +1046,8 @@ body.modal-open {
   filter: none !important;
   transform: none !important;
 }
-/* Force reset for gallery images - Add this at the end of your globals.css */
+
+/* Force reset for gallery images */
 .gallery-container .gallery-img .img-text {
   opacity: 0 !important;
 }
@@ -982,4 +1065,12 @@ body.modal-open {
 .gallery-container .gallery-img:hover .gallery-image {
   filter: blur(4px) !important;
   transform: scale(1.05) !important;
+}
+
+/* Transiciones mobile */
+@media (max-width: 480px) {
+  .transition-spinner {
+    width: 40px;
+    height: 40px;
+  }
 }
