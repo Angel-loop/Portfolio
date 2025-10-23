@@ -5,8 +5,9 @@ import Image from 'next/image'
 
 export default function ImageCard({children, imgSrc, props}:any) {
   const [isOpen, setIsOpen] = useState(false);
-  const [animationStage, setAnimationStage] = useState('closed'); // 'closed', 'opening', 'open', 'closing'
+  const [animationStage, setAnimationStage] = useState('closed');
   const containerRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
     if (!isOpen && animationStage === 'closed') {
@@ -17,21 +18,46 @@ export default function ImageCard({children, imgSrc, props}:any) {
     }
   };
 
-  // Manejar las transiciones de animación
+  // Manejar las transiciones de animación y el scroll
   useEffect(() => {
     if (animationStage === 'opening') {
+      // Centrar el modal en la vista cuando se abre
       const timer = setTimeout(() => {
         setAnimationStage('open');
-      }, 600); // Duración de la animación de entrada
+        // Centrar el scroll en el modal después de que comience la animación
+        if (modalRef.current) {
+          modalRef.current.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center',
+            inline: 'center'
+          });
+        }
+      }, 100); // Reducido para que el scroll ocurra más temprano
       return () => clearTimeout(timer);
     } else if (animationStage === 'closing') {
       const timer = setTimeout(() => {
         setIsOpen(false);
         setAnimationStage('closed');
-      }, 500); // Duración de la animación de salida
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [animationStage]);
+
+  // Efecto adicional para manejar el scroll cuando el modal está abierto
+  useEffect(() => {
+    if (isOpen && animationStage === 'open') {
+      // Asegurarse de que el modal esté centrado
+      setTimeout(() => {
+        if (modalRef.current) {
+          modalRef.current.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center',
+            inline: 'center'
+          });
+        }
+      }, 50);
+    }
+  }, [isOpen, animationStage]);
 
   return (
     <div
@@ -42,7 +68,10 @@ export default function ImageCard({children, imgSrc, props}:any) {
     >
       {isOpen ? (
         // Vista expandida (modal) con animación
-        <div className={`img-wrapper ${animationStage}`}>
+        <div 
+          className={`img-wrapper ${animationStage}`}
+          ref={modalRef}
+        >
           <Image
             src={imgSrc}
             alt=''
