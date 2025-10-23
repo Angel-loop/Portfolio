@@ -205,12 +205,12 @@ export default function Home() {
         {renderComponent("Contact", Contact)}
       </div>
 
-      {/* Overlay de transición */}
-      {isTransitioning && (
+      {/* ELIMINADO: Overlay de transición con spinner */}
+      {/* {isTransitioning && (
         <div className="transition-overlay">
           <div className="transition-spinner"></div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
