@@ -1,20 +1,16 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
 export default function ImageCard({children, imgSrc, props}:any) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div
       {...props}
       className={isOpen ? 'img-wrapper-open' : 'gallery-img'}
-      onClick={handleClick}
+      onClick={() => { setIsOpen(!isOpen) }}
     >
       {isOpen ? (
         // Vista expandida (modal)
