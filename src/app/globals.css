@@ -619,10 +619,10 @@ body {
   background: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Cambiado de center a flex-start */
   z-index: 1000;
   padding: 2rem;
-  overflow: auto;
+  overflow: auto; /* Permitir scroll dentro del modal */
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -633,8 +633,10 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: flex-start; /* Cambiado de center a flex-start */
   justify-content: center;
+  margin: auto;
+  min-height: auto; /* Permitir que crezca según el contenido */
 }
 
 /* Imagen en modal expandido */
@@ -650,6 +652,8 @@ body {
 .full-text {
   color: white;
   padding: 2rem;
+  max-height: 80vh; /* Limitar altura máxima */
+  overflow-y: auto; /* Permitir scroll vertical si el contenido es muy largo */
 }
 
 .full-text h2 {

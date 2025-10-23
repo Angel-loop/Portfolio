@@ -18,10 +18,12 @@ export default function ImageCard({children, imgSrc, props}:any) {
     }
   };
 
-  // Manejar las transiciones de animación y el scroll
+  // Manejar las transiciones de animación, scroll y body overflow
   useEffect(() => {
     if (animationStage === 'opening') {
-      // Centrar el modal en la vista cuando se abre
+      // Prevenir scroll del body cuando se abre el modal
+      document.body.style.overflow = 'hidden';
+      
       const timer = setTimeout(() => {
         setAnimationStage('open');
         // Centrar el scroll en el modal después de que comience la animación
@@ -32,16 +34,25 @@ export default function ImageCard({children, imgSrc, props}:any) {
             inline: 'center'
           });
         }
-      }, 100); // Reducido para que el scroll ocurra más temprano
+      }, 100);
       return () => clearTimeout(timer);
     } else if (animationStage === 'closing') {
       const timer = setTimeout(() => {
         setIsOpen(false);
         setAnimationStage('closed');
+        // Restaurar scroll del body cuando se cierra el modal
+        document.body.style.overflow = 'auto';
       }, 500);
       return () => clearTimeout(timer);
     }
   }, [animationStage]);
+
+  // Cleanup para restaurar el scroll si el componente se desmonta
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   // Efecto adicional para manejar el scroll cuando el modal está abierto
   useEffect(() => {
