@@ -46,7 +46,7 @@ export default function ImageCard({children, imgSrc, props}:any) {
   useEffect(() => {
     if (isOpen && animationStage === 'open') {
       // Asegurarse de que el modal esté centrado
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         if (modalRef.current) {
           modalRef.current.scrollIntoView({ 
             behavior: 'smooth', 
@@ -55,8 +55,10 @@ export default function ImageCard({children, imgSrc, props}:any) {
           });
         }
       }, 100);
+      
+      return () => clearTimeout(timer);
     }
-  }, [isOpen, animationStage]);
+  }, [isOpen, animationStage]); // ← Array de dependencias constante
 
   return (
     <div
