@@ -844,6 +844,114 @@ body.modal-open {
     text-align: center;
   }
 }
+/*****************************************
+************* GALLERY ANIMATIONS *********
+*****************************************/
+/* Estados base para las animaciones */
+.full-img.closed,
+.full-text.closed {
+  opacity: 0;
+}
+
+.full-img.open,
+.full-text.open {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Animación de ENTRADA - imagen desde izquierda, texto desde derecha */
+.full-img.opening {
+  animation: slideFromLeft 0.6s ease-out forwards;
+}
+
+.full-text.opening {
+  animation: slideFromRight 0.6s ease-out forwards;
+}
+
+/* Animación de SALIDA - imagen hacia izquierda, texto hacia derecha */
+.full-img.closing {
+  animation: slideToLeft 0.5s ease-in forwards;
+}
+
+.full-text.closing {
+  animation: slideToRight 0.5s ease-in forwards;
+}
+
+/* Keyframes para las animaciones */
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Asegurar que los elementos sean visibles para las animaciones */
+.img-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.full-img {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  /* Reset para animaciones */
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.full-text {
+  color: white;
+  padding: 2rem;
+  /* Reset para animaciones */
+  transform: translateX(0);
+  opacity: 1;
+}
 
 /*****************************************
 ************* CONTACT ********************
