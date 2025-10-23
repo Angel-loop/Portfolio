@@ -11,8 +11,24 @@ function NavBar({ onNavigate, currentSection }: NavBarProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // Detectar si es móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Verificar inicialmente
+    checkMobile();
+
+    // Agregar listener para cambios de tamaño
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleNavClick = (sectionId: string) => {
     onNavigate(sectionId);
@@ -78,7 +94,7 @@ function NavBar({ onNavigate, currentSection }: NavBarProps) {
         </div>
         
         {/* Menú desktop - visible solo en pantallas grandes */}
-        <div className='nav_items' style={{ display: window.innerWidth > 768 ? 'flex' : 'none' }}>
+        <div className='nav_items' style={{ display: isMobile ? 'none' : 'flex' }}>
           {['Home', 'About', 'Portfolio', 'Contact'].map((item) => (
             <button
               key={item}
@@ -97,7 +113,7 @@ function NavBar({ onNavigate, currentSection }: NavBarProps) {
           aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={menuOpen}
           style={{ 
-            display: window.innerWidth <= 768 ? 'flex' : 'none',
+            display: isMobile ? 'flex' : 'none',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
@@ -144,7 +160,7 @@ function NavBar({ onNavigate, currentSection }: NavBarProps) {
           alignItems: 'flex-start',
           justifyContent: 'flex-start',
           paddingTop: '6rem',
-          display: window.innerWidth <= 768 ? 'flex' : 'none'
+          display: isMobile ? 'flex' : 'none'
         }}
       >
         <button 
