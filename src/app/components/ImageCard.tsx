@@ -21,7 +21,6 @@ export default function ImageCard({children, imgSrc, props}:any) {
   // Manejar las transiciones de animación y el scroll
   useEffect(() => {
     if (animationStage === 'opening') {
-      // Centrar el modal en la vista cuando se abre
       const timer = setTimeout(() => {
         setAnimationStage('open');
         // Centrar el scroll en el modal después de que comience la animación
@@ -32,13 +31,13 @@ export default function ImageCard({children, imgSrc, props}:any) {
             inline: 'center'
           });
         }
-      }, 100); // Reducido para que el scroll ocurra más temprano
+      }, 500); // Esperar a que termine la animación de apertura
       return () => clearTimeout(timer);
     } else if (animationStage === 'closing') {
       const timer = setTimeout(() => {
         setIsOpen(false);
         setAnimationStage('closed');
-      }, 500);
+      }, 500); // Esperar a que termine la animación de cierre
       return () => clearTimeout(timer);
     }
   }, [animationStage]);
@@ -55,7 +54,7 @@ export default function ImageCard({children, imgSrc, props}:any) {
             inline: 'center'
           });
         }
-      }, 50);
+      }, 100);
     }
   }, [isOpen, animationStage]);
 
@@ -69,15 +68,21 @@ export default function ImageCard({children, imgSrc, props}:any) {
       {isOpen ? (
         // Vista expandida (modal) con animación
         <div 
-          className={`img-wrapper ${animationStage}`}
+          className="img-wrapper"
           ref={modalRef}
         >
           <Image
             src={imgSrc}
             alt=''
             className={`full-img ${animationStage}`}
+            style={{ 
+              transform: animationStage === 'open' ? 'translateX(0)' : 'none'
+            }}
           />
-          <div className={`full-text ${animationStage}`}>
+          <div className={`full-text ${animationStage}`}
+               style={{ 
+                 transform: animationStage === 'open' ? 'translateX(0)' : 'none'
+               }}>
             <h2>Type Of Work</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non recusandae facilis fugiat officia neque quas, praesentium ut commodi, laboriosam qui, distinctio assumenda. Consequuntur facere quae tempore assumenda ullam, sint eos!</p>
           </div>
