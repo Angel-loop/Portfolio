@@ -866,11 +866,11 @@ body.modal-open {
 
 /* Animación de ENTRADA - imagen desde izquierda, texto desde derecha */
 .full-img.open {
-  animation: slideFromRight 500ms ease-out forwards;
+  animation: slideFromRight 0.6s ease-out forwards;
 }
 
 .full-text.open {
-  animation: slideFromLeft 500ms ease-out forwards;
+  animation: slideFromLeft 0.6s ease-out forwards;
 }
 
 /* Animación de SALIDA - imagen hacia izquierda, texto hacia derecha */
