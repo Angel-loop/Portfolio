@@ -89,9 +89,11 @@ function NavBar({ onNavigate, currentSection }: NavBarProps) {
     <>
       {/* Navbar principal */}
       <nav className={`navContainer ${isVisible ? 'nav-visible' : 'nav-hidden'}`}>
+        {/*  
         <div className='nav_logo'>
-          {/* <h1>Logo</h1> */}
+           <h1>Logo</h1> 
         </div>
+        */}
         
         {/* Menú desktop - visible solo en pantallas grandes */}
         <div className='nav_items' style={{ display: isMobile ? 'none' : 'flex' }}>
